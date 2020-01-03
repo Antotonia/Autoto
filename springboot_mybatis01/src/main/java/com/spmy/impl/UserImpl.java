@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 @Component
 public class UserImpl {
@@ -17,25 +18,28 @@ public class UserImpl {
     private UserMapper userMapper;
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
+
+
     @Resource
     private RedisUtil redisUtil;
 
     private final Logger log = LoggerFactory.getLogger(UserImpl.class);
-
-    public Map<String,Object> findByIdUser(int id){
+    private int i = 1;
+    private Timer timer = new Timer();
+    public Map<Object,Object> findByIdUser(int id) {
+//        Map<Object, Object> map = userMapper.findById(id);
+//        return map;
         String key = "user_" + id;
-        Map<Object,Object> redisMap = new HashMap<Object,Object>();
-        Map<String,Object> resultMap = new HashMap<String,Object>();
-        redisMap = redisUtil.hmget(key);
-        if(redisMap.isEmpty()){
-            resultMap  = userMapper.findById(id);
-            redisUtil.hmset(key,resultMap);
+        Map<Object, Object> map = new HashMap<Object, Object>();
+        map = redisUtil.hmget(key);
+        if (map.isEmpty()) {
             System.out.println("================================数据库获取");
-            return resultMap;
-        }else {
-            resultMap.put(key, redisMap);
+            map = userMapper.findById(id);
+            redisUtil.hmset(key, map);
+            return map;
+        } else {
             System.out.println("================================缓存获取");
-            return resultMap;
+            return map;
         }
     }
 }

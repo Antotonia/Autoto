@@ -7,7 +7,7 @@ import java.util.Map;
 @Repository
 public interface UserMapper {
     @Select({"select * from user where id = #{id}"})
-    Map<String,Object> findById(@Param("id") int id);
+    Map<Object,Object> findById(@Param("id") int id);
 }
 
 

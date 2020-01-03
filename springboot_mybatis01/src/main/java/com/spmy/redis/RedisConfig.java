@@ -61,7 +61,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         return redisTemplate.opsForHash();
     }
 
-    /**
+     /**
      * 对redis字符串类型数据操作
      *
      * @param redisTemplate
