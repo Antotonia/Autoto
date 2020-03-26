@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "bog",
+      "type": "com.spmy.bean.Bog",
+      "sourceType": "com.spmy.bean.Bog"
+    },
+    {
+      "name": "person",
+      "type": "com.spmy.bean.Person",
+      "sourceType": "com.spmy.bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "bog.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.spmy.bean.Bog"
+    },
+    {
+      "name": "bog.name",
+      "type": "java.lang.String",
+      "sourceType": "com.spmy.bean.Bog"
+    },
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.spmy.bean.Person"
+    },
+    {
+      "name": "person.list",
+      "type": "java.util.List<java.lang.Object>",
+      "sourceType": "com.spmy.bean.Person"
+    },
+    {
+      "name": "person.map",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "com.spmy.bean.Person"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "com.spmy.bean.Person"
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,37 @@
+server:
+  port: 8089
+  tomcat:
+    uri-encoding: utf-8
+
+
+spring:
+  datasource:
+    username: root
+    password: root
+        url: jdbc:mysql://localhost:3306/mydb?characterEncoding=utf-8
+#    url: jdbc:mysql://39.108.76.44:3306/mydb?characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    host: 127.0.0.1 #120.79.82.191
+    port: 6379
+    password: root
+    jedis:
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: -1  #最大等待时间
+        max-idle: 500 #最大空闲时间
+        min-idle: 0   #最小空闲时间
+    lettuce:
+      shutdown-timeout: 1000 #最大等待时间
+
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.spmy.mapper
+
+logging:
+  level:
+    com:
+      spmy:
+        mapper: debug  # info error
+
