@@ -5,12 +5,13 @@ import com.spmy.impl.UserImpl;
 import com.spmy.quartz.test.ExcecuteQuartz;
 import com.spmy.redis.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
@@ -18,6 +19,8 @@ public class UserController {
     @Resource
     private RedisUtil redisUtil;
 
+    //测试
+    //===========================================================================
     @RequestMapping("/test")
     public String testCon(){
         return "success";
@@ -38,7 +41,8 @@ public class UserController {
         return redisUtil.get(key);
     }
 
-    //=============================定时任务接口==========================
+    //定时任务
+    //===========================================================================
     @Autowired
     private ExcecuteQuartz excecuteQuartz;
     @RequestMapping("/addJob")
@@ -51,5 +55,6 @@ public class UserController {
         excecuteQuartz.delJob("123","12345");
         return "success";
     }
+
 
 }
