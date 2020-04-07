@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 /**
- * PropertySource指定引用的配置文件，因为@ConfigurationProperties默认识别主配置文
+ * PropertySource指定引用的配置文件，因为@ConfigurationProperties默认识别主配置文件
  */
 @PropertySource(value = {"classpath:bog.properties"})
 @ConfigurationProperties(prefix = "bog")
