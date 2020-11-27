@@ -1,0 +1,30 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: parment-service
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mydb?useSSL=false
+    driver-class-name: com.mysql.jdbc.Driver
+
+eureka:
+  client:
+    register-with-eureka: true #将自己注册到eureka中
+    fetchRegistry: true
+    service-url:
+#      defaultZone: http://eureka7001:7001/eureka #单机版
+      defaultZone: http://eureka7001:7001/eureka,http://eureka7002:7002/eureka  #集群版
+  instance:
+    instance-id: zcx-parment8001 #设置euerka显示的status名称
+    prefer-ip-address: true #设置显示ip
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.zhangcx.springcloud.entity
+
+
+
+
+

@@ -1,0 +1,346 @@
+select SUBSTRING(EX_ID) as EX_ID,国标分类 as ASSET_CLASS_CODE_GB,资产大类 as ASSET_MAIN_TYPE,单位性质 as UNIT_PROPERTY,年度 as YEAR,ADMIN_DIVISION_CODE,ADMIN_DIVISION_NAME,所属系统 as UNIT_SYS,单位名称 as UNIT_NAME,统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select card.recid as EX_ID,sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2015' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20151231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid,card.recid
+  )
+  union all
+ select
+ SUBSTRING(EX_ID) as EX_ID,
+国标分类 as ASSET_CLASS_CODE_GB,
+资产大类 as ASSET_MAIN_TYPE,
+单位性质 as UNIT_PROPERTY,
+年度 as YEAR,
+ADMIN_DIVISION_CODE,
+ADMIN_DIVISION_NAME,
+所属系统 as UNIT_SYS,
+单位名称 as UNIT_NAME,
+统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,
+资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select
+card.recid as EX_ID,
+sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2016' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20161231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid
+  )
+  union all
+  select
+  SUBSTRING(EX_ID) as EX_ID,
+国标分类 as ASSET_CLASS_CODE_GB,
+资产大类 as ASSET_MAIN_TYPE,
+单位性质 as UNIT_PROPERTY,
+年度 as YEAR,
+ADMIN_DIVISION_CODE,
+ADMIN_DIVISION_NAME,
+所属系统 as UNIT_SYS,
+单位名称 as UNIT_NAME,
+统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,
+资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select
+card.recid as EX_ID,
+sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2017' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20171231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid
+  )
+  union all
+  select
+  SUBSTRING(EX_ID) as EX_ID,
+国标分类 as ASSET_CLASS_CODE_GB,
+资产大类 as ASSET_MAIN_TYPE,
+单位性质 as UNIT_PROPERTY,
+年度 as YEAR,
+ADMIN_DIVISION_CODE,
+ADMIN_DIVISION_NAME,
+所属系统 as UNIT_SYS,
+单位名称 as UNIT_NAME,
+统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,
+资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select
+card.recid as EX_ID,
+sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2018' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20181231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid
+  )
+  union all
+  select
+  SUBSTRING(EX_ID) as EX_ID,
+国标分类 as ASSET_CLASS_CODE_GB,
+资产大类 as ASSET_MAIN_TYPE,
+单位性质 as UNIT_PROPERTY,
+年度 as YEAR,
+ADMIN_DIVISION_CODE,
+ADMIN_DIVISION_NAME,
+所属系统 as UNIT_SYS,
+单位名称 as UNIT_NAME,
+统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,
+资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select
+card.recid as EX_ID,
+sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2019' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20191231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid
+  )
+  union all
+  select
+  SUBSTRING(EX_ID) as EX_ID,
+国标分类 as ASSET_CLASS_CODE_GB,
+资产大类 as ASSET_MAIN_TYPE,
+单位性质 as UNIT_PROPERTY,
+年度 as YEAR,
+ADMIN_DIVISION_CODE,
+ADMIN_DIVISION_NAME,
+所属系统 as UNIT_SYS,
+单位名称 as UNIT_NAME,
+统一社会信用代码 as UNI_SOCIAL_CREDIT_ID,
+资产总值 as TOTAL_ASSET_VALUE
+from
+(
+select
+card.recid as EX_ID,
+sortgb.stdname as 国标分类,
+case
+when sortgb.stdname = '无形资产' then
+'无形资产'
+else
+'固定资产'
+end as 资产大类,
+'2020' as 年度,
+md.stdname as 单位名称,
+md.shehxydm as 统一社会信用代码,
+case
+ when acc.stdcode = '01' then
+  '行政单位'
+ when acc.stdcode = '02' then
+  '事业单位'
+ else
+  '民间非营利组织'
+end as 单位性质,
+'资产' as 所属系统,
+sum(case
+ when card.cardstate < '09' then
+      card.jiaz
+     else
+      0
+   end) as 资产总值,
+   admd.STDCODE as ADMIN_DIVISION_CODE,
+   admd.STDNAME as ADMIN_DIVISION_NAME
+from gams_assetcard card
+  join (select max(card2.yewxlh) as y, card2.objectid as g
+         from gams_assetcard card2
+         where card2.AUDITSTATE = 2
+         and to_char(card2.jizrq, 'yyyymmdd') <= '20201231'
+         group by card2.objectid) f on card.yewxlh = f.y
+  and card.objectid = f.g
+  left join md_org md on md.recid = card.orgunit
+  left join gams_jc_assetsort_gb sortgb on sortgb.recid = card.sortgbid
+  left join GAMS_JC_UNITRUNACCSYSTEM acc on acc.recid = md.danwzxkjzdid
+  left join GAMS_JC_ADMDIVISIONS admd on admd.recid = md.xingzqhid
+  where card.auditstate = 2
+  and md.stdname is not null
+  and md.shehxydm <> ''
+  group by md.stdname, acc.stdcode, admd.stdname,admd.STDCODE,admd.STDNAME, md.shehxydm,sortgb.stdname,card.recid,card.recid
+  )
