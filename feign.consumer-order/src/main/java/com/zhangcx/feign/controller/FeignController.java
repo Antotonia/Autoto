@@ -12,7 +12,7 @@ public class FeignController {
     private FergnService fergnService;
 
     @PostMapping("/addPayment")
-    public ApiResult addPayment( @RequestParam("serial") String serial){
+    public ApiResult addPayment(@RequestParam("serial") String serial){
         return fergnService.addPayment(serial);
     }
 
