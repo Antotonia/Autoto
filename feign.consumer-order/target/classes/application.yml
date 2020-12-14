@@ -15,3 +15,13 @@ eureka:
   instance:
     instance-id: feignOrder-service #设置euerka显示的status名称
     prefer-ip-address: true #设置显示ip
+
+#设置feign客户端的超时时间(支持ribbon)
+ribbon:
+  ReadTimeout:  5000 #设置连接服务的时间
+  ConnectTimeout: 5000 #设置连接后读取资源的时间
+
+#设置feign调用日志
+logging:
+  level:
+    com.zhangcx.feign.server.FergnService: debug

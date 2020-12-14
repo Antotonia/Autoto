@@ -1,0 +1,18 @@
+server:
+  port: 8003
+
+spring:
+  application:
+    name: hs-consumer-order80
+
+eureka:
+  client:
+    register-with-eureka: true    #表识不向注册中心注册自己
+    fetch-registry: true   #表示自己就是注册中心，职责是维护服务实例，并不需要去检索服务
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka #单机版
+
+#设置feign客户端的超时时间(支持ribbon)
+ribbon:
+  ReadTimeout:  5000 #设置连接服务的时间
+  ConnectTimeout: 5000 #设置连接后读取资源的时间

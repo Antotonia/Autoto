@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hs.consumer-order80" />
+        <module name="hs.provider-payment8001" />
+        <module name="api-common" />
+        <module name="eureka-server7001" />
+        <module name="provider-payment8001" />
+        <module name="eureka-server7002" />
+        <module name="feign.consumer-order" />
+        <module name="workSqlServer1" />
+        <module name="provider-payment8002" />
+        <module name="sh.provider-payment8001" />
+        <module name="zk.provider-payment8003" />
+        <module name="zk.consumer-order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="api-common" target="1.8" />
+      <module name="consumer-order" target="1.8" />
+      <module name="eureka-server7001" target="1.8" />
+      <module name="eureka-server7002" target="1.8" />
+      <module name="feign.consumer-order" target="1.8" />
+      <module name="hs.consumer-order80" target="1.8" />
+      <module name="hs.provider-payment8001" target="1.8" />
+      <module name="provider-payment8001" target="1.8" />
+      <module name="provider-payment8002" target="1.8" />
+      <module name="sh.provider-payment8001" target="1.8" />
+      <module name="springCloud01" target="1.8" />
+      <module name="workSqlServer1" target="1.5" />
+      <module name="zk.consumer-order" target="1.8" />
+      <module name="zk.provider-payment8003" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

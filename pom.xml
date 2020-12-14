@@ -11,7 +11,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>provider-payment8001</module>
-        <module>consumer-order</module>
         <module>api-common</module>
         <module>eureka-server7001</module>
         <module>eureka-server7002</module>
@@ -20,6 +19,7 @@
         <module>zk.consumer-order</module>
         <module>hs.provider-payment8001</module>
         <module>feign.consumer-order</module>
+        <module>hs.consumer-order80</module>
     </modules>
 
     <!--统一管理jar包版本-->

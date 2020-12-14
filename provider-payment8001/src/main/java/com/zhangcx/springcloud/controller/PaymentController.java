@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhangcx
@@ -48,5 +49,15 @@ public class PaymentController {
             return ApiResult.success("查询成功-"+"端口："+serverPort,payment);
         }
         return ApiResult.failure("查询失败");
+    }
+
+    @GetMapping(value = "/timeOutTest")
+    public String timeOutTest(){
+        try{
+            TimeUnit.SECONDS.sleep(5);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return serverPort;
     }
 }
