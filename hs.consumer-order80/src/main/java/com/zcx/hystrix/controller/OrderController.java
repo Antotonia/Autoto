@@ -1,6 +1,8 @@
 package com.zcx.hystrix.controller;
 
 import com.netflix.discovery.converters.Auto;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.zcx.hystrix.service.ConsumerOrder;
 import com.zcx.hystrix.service.impl.ConsumerOrderImpl;
 import org.slf4j.Logger;
@@ -28,10 +30,18 @@ public class OrderController {
         return result;
     }
     @GetMapping("/order/hystrix/timeout/{id}")
+    @HystrixCommand(fallbackMethod = "paymentInfoTimeOutFallback",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+    })
     public String paymentInfo_TimeOut(@PathVariable("id") Integer id){
+        int i = 10/0;
         String result = consumerOrderImpl.paymentInfo_TimeOut(id);
         log.info("*******result:"+result);
         return result;
+    }
+
+    public String paymentInfoTimeOutFallback(Integer id){
+        return "8001系统繁忙、或者程序异常、请稍后重试！id="+id;
     }
 }
 

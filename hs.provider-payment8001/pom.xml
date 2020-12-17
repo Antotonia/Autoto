@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sh.provider-payment8001</artifactId>
+    <artifactId>hs.provider-payment8001</artifactId>
     <dependencies>
         <!--新增hystrix-->
         <dependency>

@@ -7,9 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/eureka-server7002/eureka-server7002.iml" filepath="$PROJECT_DIR$/eureka-server7002/eureka-server7002.iml" />
       <module fileurl="file://$PROJECT_DIR$/feign.consumer-order/feign.consumer-order.iml" filepath="$PROJECT_DIR$/feign.consumer-order/feign.consumer-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/hs.consumer-order80/hs.consumer-order80.iml" filepath="$PROJECT_DIR$/hs.consumer-order80/hs.consumer-order80.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hs.provider-payment8001/hs.provider-payment8001.iml" filepath="$PROJECT_DIR$/hs.provider-payment8001/hs.provider-payment8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/provider-payment8001/provider-payment8001.iml" filepath="$PROJECT_DIR$/provider-payment8001/provider-payment8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/provider-payment8002/provider-payment8002.iml" filepath="$PROJECT_DIR$/provider-payment8002/provider-payment8002.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hs.provider-payment8001/sh.provider-payment8001.iml" filepath="$PROJECT_DIR$/hs.provider-payment8001/sh.provider-payment8001.iml" />
       <module fileurl="file://$PROJECT_DIR$/springCloud01.iml" filepath="$PROJECT_DIR$/springCloud01.iml" />
       <module fileurl="file://$PROJECT_DIR$/zk.consumer-order/zk.consumer-order.iml" filepath="$PROJECT_DIR$/zk.consumer-order/zk.consumer-order.iml" />
       <module fileurl="file://$PROJECT_DIR$/zk.provider-payment8003/zk.provider-payment8003.iml" filepath="$PROJECT_DIR$/zk.provider-payment8003/zk.provider-payment8003.iml" />
