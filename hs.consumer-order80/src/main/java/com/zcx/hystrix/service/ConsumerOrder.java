@@ -1,5 +1,6 @@
 package com.zcx.hystrix.service;
 
+import com.zcx.hystrix.service.fallback.ConsumerOrderFallBack;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
-@FeignClient(value = "HS-PROVIDER-PAYMENT8001")
+@FeignClient(value = "HS-PROVIDER-PAYMENT8001",fallback = ConsumerOrderFallBack.class)
 public interface ConsumerOrder {
     @GetMapping(value = "/payment/hystrix/ok/{id}",produces = "application/json;charset=UTF-8")
     String paymentInfo_OK(@PathVariable("id") Integer id);

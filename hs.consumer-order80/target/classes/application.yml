@@ -16,3 +16,7 @@ eureka:
 ribbon:
   ReadTimeout:  5000 #设置连接服务的时间
   ConnectTimeout: 5000 #设置连接后读取资源的时间
+
+feign:
+  hystrix:
+    enabled: true #开始opnefeign对hystrix的支持
