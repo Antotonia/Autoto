@@ -15,7 +15,6 @@
         <module name="feign.consumer-order" />
         <module name="workSqlServer1" />
         <module name="provider-payment8002" />
-        <module name="sh.provider-payment8001" />
         <module name="zk.provider-payment8003" />
         <module name="zk.consumer-order" />
       </profile>
