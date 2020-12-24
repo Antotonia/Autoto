@@ -20,6 +20,7 @@
         <module>hs.provider-payment8001</module>
         <module>feign.consumer-order</module>
         <module>hs.consumer-order80</module>
+        <module>hs.consumer-dashboard9001</module>
     </modules>
 
     <!--统一管理jar包版本-->

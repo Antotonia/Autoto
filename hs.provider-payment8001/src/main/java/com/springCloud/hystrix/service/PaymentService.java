@@ -9,6 +9,9 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class PaymentService {
     //===服务降级===
+    @HystrixCommand(fallbackMethod = "paymentInfoTimeOutFallback",commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+    })
     public String paymentInfo_OK(Integer id){
         return "线程池："+Thread.currentThread().getName()+"   paymentInfo_OK,id：  "+id+"\t"+"哈哈哈"  ;
     }
