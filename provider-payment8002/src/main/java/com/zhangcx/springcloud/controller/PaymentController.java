@@ -44,9 +44,6 @@ public class PaymentController {
     @GetMapping("/getPaymentById")
     public ApiResult getPaymentById(@RequestParam("id") String id){
         Payment payment = paymentService.getPaymentById(id);
-        if(payment != null){
-            return ApiResult.success("查询成功-"+"端口："+serverPort,payment);
-        }
-        return ApiResult.failure("查询失败");
+        return ApiResult.success("查询成功-"+"端口："+serverPort,payment);
     }
 }
