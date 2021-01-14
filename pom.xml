@@ -22,6 +22,9 @@
         <module>hs.consumer-order80</module>
         <module>hs.consumer-dashboard9001</module>
         <module>gatewey9527</module>
+        <module>config.service3344</module>
+        <module>config.client3355</module>
+        <module>config.client3366</module>
     </modules>
 
     <!--统一管理jar包版本-->
