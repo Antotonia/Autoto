@@ -1,0 +1,28 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Antotonia/Autoto.git
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka #单机版
+
+#===设置广播通知===
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
