@@ -1,0 +1,33 @@
+server:
+  port: 8802
+
+spring:
+  application:
+    name: steam-comsumer8802
+  cloud:
+    stream:
+      binders:                                   # 在此处绑定rabbitmq的服务信息
+        defaultRabbit:                           # 表示定义名称，用于binding整合
+          type: rabbit                           # 消息中间件的类型
+          environment:                           # 设置rabbitmq的相关环境配置
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:                                 # 服务的整合处理
+        output:                                 # 这个名字是一个通道的名称
+          destination: studyExchange            # 表示使用exchange名称定义
+          content-type: application/json        # 设置消息类型，本次为json，文本设置"text/plain"
+          group: atguiguA
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001:7001/eureka #单机版
+  instance:
+    lease-renewal-interval-in-seconds: 2        # 设置心跳时间间隔（默认为30秒）
+    lease-expiration-duration-in-seconds: 5     # 如果现在超过了5秒间隔（默认为90秒）
+    instance-id: send-8802.com                  # 在信息列表时显示主机名称
+    prefer-ip-address: true                     # 访问的路径变为IP地址
